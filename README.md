@@ -1,2 +1,2 @@
 # FotocolorVelasco
-Web development for the company Fotocolor Velasco S.L.
+Web development for Fotocolor Velasco S.L.
