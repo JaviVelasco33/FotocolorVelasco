@@ -1,0 +1,413 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+/* ExtraLight = 200, Bold = 700. */
+
+* {
+    margin: 0;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: "Noto Sans", serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+:root {
+    --primary-color: #007fd9;
+    --tlf-color: indigo;
+    --whatsapp-color: #4ac859;
+    --email-color: firebrick;
+    --shadow-color: #002c4b86;
+    --primary-background-color: #001e33;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    margin: 0.5rem 0rem;
+    font-size: 1.3rem;
+}
+
+hr {
+    margin: 0.5rem 0;
+    color: var(--primary-color);
+}
+
+i {
+    color: var(--primary-color);
+}
+
+a {
+    all: unset;
+}
+
+h1 {
+    white-space: nowrap;
+    margin: 0rem;
+}
+
+/* Mobile First */
+#nav {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 8vh;
+    z-index: 10;
+}
+
+#nav .container {
+    height: 100%;
+}
+
+.logo {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.images-wrapper {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+.logo-image {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    z-index: 1;
+}
+
+.blue-rect {
+    width: 2.3%;
+    height: 100%;
+    background-color: var(--primary-color);
+    position: absolute;
+    left: 53.32%;
+    transform: translateX(-50%);
+    z-index: 3;
+}
+
+.contact {
+    visibility: hidden;
+}
+
+.progress-container {
+    width: 100%;
+    height: 5%;
+    background: rgba(0, 0, 0, 0.137);
+    position: absolute;
+    bottom: -2%;
+    left: 0;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background-color: var(--primary-color);
+    box-shadow: 0px 2px 5px var(--primary-color); 
+    border-radius: 10px;
+    opacity: 1;
+    transition: width 0.1s linear;
+}
+
+#main-sec {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 2rem;
+    /* background-image: url('/assets/images/fachada.jpeg'); */
+    /* background-attachment: fixed; */
+    /* background-position: center; */
+}
+
+.title {
+    width: 100%;
+    display: flex;
+    margin: 1rem 0rem 0.2rem 0rem;
+    justify-content: space-between;
+}
+
+.empty-div {
+    width: 10%;
+    height: 1px;
+}
+
+.title-line {
+    border: solid 2px var(--primary-color);
+    border-radius: 10px;
+    width: 100%;
+    height: 1px;
+    margin: 1.1rem 0rem;
+}
+
+.vid-main{
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+}
+
+.main-text {
+    margin: 0rem;
+}
+
+.btn-main {
+    background-color: var(--whatsapp-color);
+    border: solid 1px var(--whatsapp-color);
+    border-radius: 50px;
+    font-size: 1.5rem;
+    color: white;
+    padding: 0.5rem 3rem;
+    margin: 3rem 0rem;
+    cursor: pointer;
+    transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+    i {
+        font-size: 1.5rem;
+        color: white;
+        transition: color 0.5s ease;
+    }
+}
+
+#footer {
+    background-color: var(--primary-background-color);
+    color: white;
+    padding: 2% 1%;
+    border-top: solid 1px var(--primary-color);
+    z-index: -1;
+}
+
+#footer i{
+    color: white;
+}
+
+.footer-maps {
+    width: 100%;
+    border: solid 1px var(--primary-color);
+    border-radius: 10px;
+    align-items: stretch;
+    margin: 1rem 0;
+}
+
+.btn-contact {
+    margin: 0;
+    background-color: var(--primary-color);
+    border: none;
+    box-shadow: 5px 5px 5px black;
+    border-radius: 100px;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-contact p {
+    display: none; 
+}
+
+
+/* Mobile exclusive */
+@media (max-width: 767px) {
+    .blue-rect {
+        animation: moveBlueRect 10s linear infinite;
+    }
+
+    @keyframes moveBlueRect {
+        0% {
+            transform: translateX(-50%);
+            background-color: #ff8027;
+            mix-blend-mode: difference;
+        }
+        10% {
+            transform: translateX(-2200%);
+            background-color: #ff8027;
+            mix-blend-mode: difference;
+        }
+        60% {
+            transform: translateX(1800%);
+            background-color: #ff8027;
+            mix-blend-mode: difference;
+        }
+        70% {
+            transform: translateX(-50%);
+            background-color: #ff8027;
+            mix-blend-mode: difference;
+        }
+        100% {
+            transform: translateX(-50%);
+            background-color: #ff8027;
+            mix-blend-mode: difference;
+        }
+    }
+}
+
+/* Tablets */
+/* @media (min-width: 768px) {
+    .blue-rect {
+        background-color: red;
+    }
+} */
+
+/* Desktop */
+@media (min-width: 1024px) {
+    #nav {
+        width: 100%;
+        position: sticky;
+        top: 0;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 8vh;
+        border-bottom: solid 1px #ddd;
+    }
+
+    #nav .container {
+        flex-direction: row;
+        align-items: center;
+    }
+
+
+    .logo {
+        position: relative;
+        width: 30%;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        overflow: hidden;
+        cursor: default;
+    }
+
+    .images-wrapper {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+    }
+
+    .logo-image {
+        position: absolute;
+        width: 100%;
+        height: auto;
+        z-index: 1;
+    }
+
+    .blue-rect {
+        height: 80%;
+        transition: transform 0.01s ease;
+    }
+
+    .logo:hover .blue-rect {
+        left: 0;
+        backdrop-filter: invert(100%);
+        mix-blend-mode: difference;
+    }
+
+    .contact {
+    font-size: large;
+        visibility: visible;
+        cursor: pointer;
+        transition: all 0.5s ease;
+        text-shadow: 1px 1px 2px var(--shadow-color);
+    }
+    
+    .contact:hover {
+        color: var(--primary-color);
+        font-size: x-large;
+        font-weight: bold;
+        text-shadow: 15px 15px 5px var(--shadow-color);
+    }
+    
+    #main-sec .container {
+        margin: 4%;
+    }
+    
+    .empty-div {
+        width: 5%;
+    }
+    
+    .title-line {
+        margin: 1.5rem 0rem;
+    }
+    .main-text {
+        justify-content: center;
+        align-content: center;
+        font-size: 1.5rem;
+    }
+
+    .btn-main:hover {
+        background-color: transparent;
+        color: var(--primary-color);
+        border-color: var(--primary-color);
+        i {
+            color: var(--primary-color);
+        }
+    }
+
+    .btn-contact i {
+        display: inline-block;
+        transition: transform 0.5s ease; 
+    }
+    
+    .btn-contact:hover i {
+        transform: translateX(-60px);
+    }
+    
+    .btn-contact p {
+        display: none; 
+        position: absolute;
+        right: 10%;
+        top: 50%;
+        transform: translateY(-50%);
+        margin: 0;
+        font-size: 1rem;
+        font-weight: bold;
+        color: white;
+        white-space: nowrap;
+    }
+    
+    .btn-contact:hover p {
+        display: block; 
+    }
+    
+    .btn-contact:hover {
+        padding: 0.5rem 5rem;
+        justify-content: space-between;
+    }
+    
+    .btn-tlf:hover {
+        background-color: var(--tlf-color);
+    }
+    
+    .btn-whatsapp:hover {
+        background-color: var(--whatsapp-color);
+    }
+    
+    .btn-email:hover {
+        background-color: var(--email-color);
+    }
+}
