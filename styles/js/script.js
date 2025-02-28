@@ -155,9 +155,53 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // ------------------ Main-sec parallax background ------------------
 document.addEventListener('scroll', function() {
-    const mainSec = document.querySelector('#main-sec');
+    const mainBg = document.querySelector('.main-bg');
     const scrollPosition = window.scrollY;
     
-    // Ajusta la posición de fondo en función del desplazamiento de la página
-    mainSec.style.backgroundPositionY = `${scrollPosition * -0.5}px`;
+    // Ajusta la posición de la imagen en función del desplazamiento de la página
+    mainBg.style.transform = `translateY(${scrollPosition * -0.5}px)`;
+});
+
+// --------------------- Carousel -----------------------
+document.addEventListener('DOMContentLoaded', function() {
+    const customCarousel = document.querySelector('.custom-car');
+    const items = document.querySelectorAll('.custom-car-item');
+    
+    // Duplica los elementos para crear el efecto infinito
+    items.forEach(item => {
+        const clon = item.cloneNode(true);
+        customCarousel.appendChild(clon);
+    });
+
+    // Calcular el ancho total del carousel después de duplicar los elementos
+    function ajustarAnimacion() {
+        const anchoTotal = customCarousel.scrollWidth;
+        const mitad = anchoTotal / 2;
+
+        // Actualiza la animación basada en el ancho real
+        const styleSheet = document.styleSheets[0];
+        const keyframes = `
+            @keyframes custom-scroll {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-${mitad}px); }
+            }
+        `;
+        
+        // Elimina cualquier regla previa de custom-scroll
+        for (let i = 0; i < styleSheet.cssRules.length; i++) {
+            if (styleSheet.cssRules[i].name === 'custom-scroll') {
+                styleSheet.deleteRule(i);
+                break;
+            }
+        }
+
+        // Añade la nueva regla de custom-scroll
+        styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
+    }
+
+    // Ejecuta después de que todo esté cargado
+    setTimeout(ajustarAnimacion, 100);
+
+    // Ajusta la animación si cambia el tamaño de la ventana
+    window.addEventListener('resize', ajustarAnimacion);
 });

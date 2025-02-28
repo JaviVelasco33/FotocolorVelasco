@@ -14,11 +14,13 @@
 
 :root {
     --primary-color: #007fd9;
-    --tlf-color: indigo;
+    --tlf-color: slateblue;
     --whatsapp-color: #4ac859;
     --email-color: firebrick;
     --shadow-color: #002c4b86;
     --primary-background-color: #001e33;
+    --gradient-mobile: linear-gradient(180deg, #005b9cab 0%, #007fd900 90%);
+    --gradient-desktop: radial-gradient(circle, #005b9cab 0%, #007fd900 95%);
 }
 
 body {
@@ -28,7 +30,8 @@ body {
 
 p {
     margin: 0.5rem 0rem;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
+    color: white;
 }
 
 hr {
@@ -46,7 +49,10 @@ a {
 
 h1 {
     white-space: nowrap;
+    font-style: italic;
     margin: 0rem;
+    color: white;
+    font-size: 1.3rem;
 }
 
 /* Mobile First */
@@ -121,7 +127,7 @@ h1 {
     width: 0%;
     height: 100%;
     background-color: var(--primary-color);
-    box-shadow: 0px 2px 5px var(--primary-color); 
+    box-shadow: 0px 2px 5px var(--primary-color);
     border-radius: 10px;
     opacity: 1;
     transition: width 0.1s linear;
@@ -130,20 +136,36 @@ h1 {
 #main-sec {
     width: 100%;
     display: flex;
+    position: relative;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 1rem 2rem;
-    /* background-image: url('/assets/images/fachada.jpeg'); */
-    /* background-attachment: fixed; */
-    /* background-position: center; */
+    background-color: black;
+    overflow: hidden;
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+}
+
+.main-bg {
+    position: absolute;
+    top: 0;
+    height: 150%;
+    object-fit: cover;
+    opacity: 0.5;
+    filter: blur(7px);
+    z-index: 0;
 }
 
 .title {
     width: 100%;
     display: flex;
-    margin: 1rem 0rem 0.2rem 0rem;
+    margin: 0.5rem 0rem 0rem 0rem;
     justify-content: space-between;
+    align-items: center;
 }
 
 .empty-div {
@@ -156,18 +178,99 @@ h1 {
     border-radius: 10px;
     width: 100%;
     height: 1px;
-    margin: 1.1rem 0rem;
+    margin: 1rem 0rem;
 }
 
-.vid-main{
+.main-div {
+    background: var(--gradient-mobile);
+    border-radius: 25px;
+}
+
+.vid-main {
     width: 100%;
-    height: 100%;
+    height: auto;
     aspect-ratio: 16/9;
     object-fit: cover;
+    box-shadow: 0px 0px 10px var(--shadow-color);
+    border-radius: 25px;
 }
 
 .main-text {
-    margin: 0rem;
+    padding: 0rem 1rem;
+    /* text-align: justify; */
+    /* text-align-last: center; */
+}
+
+.content-2 {
+    background-color: rgb(222, 222, 222);
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0rem;
+    box-shadow: 0px 0px 10px 10px rgb(222, 222, 222);
+
+    h1 {
+        color: black;
+        padding: 0rem 0rem 0rem 1.5rem;
+    }
+
+    .title-line {
+        margin-right: 1.5rem;
+    }
+
+    p {
+        margin-top: 0;
+        color: black;
+    }
+
+    .main-div {
+        background: transparent;
+    }
+}
+
+.custom-car-cont {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    height: 20rem;
+}
+
+.custom-car {
+    display: flex;
+    flex-direction: row;
+    animation: custom-scroll 40s linear infinite;
+    width: max-content;
+    height: 100%;
+    padding: 0;
+}
+
+.custom-car-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex: 0 0 auto;
+    margin: 0 1rem;
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+.custom-car-item img {
+    width: auto;
+    height: 13rem;
+    object-fit: cover;
+    filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.7));
+    transition: all 0.3s ease;
+}
+
+@keyframes custom-scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
 .btn-main {
@@ -175,11 +278,13 @@ h1 {
     border: solid 1px var(--whatsapp-color);
     border-radius: 50px;
     font-size: 1.5rem;
+    white-space: nowrap;
     color: white;
-    padding: 0.5rem 3rem;
-    margin: 3rem 0rem;
+    padding: 0.5rem 2rem;
+    margin: 1rem 0rem 0rem 0rem;
     cursor: pointer;
-    transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+    box-shadow: 4px 4px 6px var(--shadow-color);
+    transition: all 0.3s ease-in-out;
     i {
         font-size: 1.5rem;
         color: white;
@@ -192,10 +297,10 @@ h1 {
     color: white;
     padding: 2% 1%;
     border-top: solid 1px var(--primary-color);
-    z-index: -1;
+    z-index: 1;
 }
 
-#footer i{
+#footer i {
     color: white;
 }
 
@@ -222,9 +327,8 @@ h1 {
 }
 
 .btn-contact p {
-    display: none; 
+    display: none;
 }
-
 
 /* Mobile exclusive */
 @media (max-width: 767px) {
@@ -270,6 +374,10 @@ h1 {
 
 /* Desktop */
 @media (min-width: 1024px) {
+    h1 {
+        font-size: 2rem;
+    }
+
     #nav {
         width: 100%;
         position: sticky;
@@ -286,7 +394,6 @@ h1 {
         flex-direction: row;
         align-items: center;
     }
-
 
     .logo {
         position: relative;
@@ -328,57 +435,88 @@ h1 {
     }
 
     .contact {
-    font-size: large;
+        font-size: large;
         visibility: visible;
         cursor: pointer;
         transition: all 0.5s ease;
         text-shadow: 1px 1px 2px var(--shadow-color);
     }
-    
+
     .contact:hover {
         color: var(--primary-color);
         font-size: x-large;
         font-weight: bold;
         text-shadow: 15px 15px 5px var(--shadow-color);
     }
-    
+
     #main-sec .container {
         margin: 4%;
     }
-    
+
     .empty-div {
         width: 5%;
     }
-    
+
     .title-line {
         margin: 1.5rem 0rem;
     }
+
+    .main-div {
+        background: var(--gradient-desktop);
+    }
+
     .main-text {
         justify-content: center;
         align-content: center;
         font-size: 1.5rem;
     }
 
+    .content-2 {
+        margin: 3rem 0rem;
+        h1 {
+            padding: 0rem 0rem;
+        }
+    } 
+
+    .custom-car-item {
+        margin: 0 5rem;
+    }
+
+    .custom-car-item:hover img {
+        transform: translateY(-15px);
+        filter: drop-shadow(0px 40px 20px rgba(0, 0, 0, 0.5));
+    }
+
     .btn-main:hover {
-        background-color: transparent;
+        background-color: white;
+        box-shadow: inset 4px 4px 6px -1px rgba(0, 0, 0, 0.2),
+            inset -4px -4px 6px -1px rgba(255, 255, 255, 0.7),
+            -0.5px -0.5px 0px rgb(255, 255, 255, 1),
+            0.5px 0.5px 0px rgba(0, 0, 0, 0.15),
+            0px 12px 10px -10px rgba(0, 0, 0, 0.05);
         color: var(--primary-color);
+        transform: translateY(0.5rem);
         border-color: var(--primary-color);
+        font-size: 1.4rem;
+        margin: 1rem 0rem 0.15rem 0rem;
+
         i {
             color: var(--primary-color);
+            font-size: 1.4rem;
         }
     }
 
     .btn-contact i {
         display: inline-block;
-        transition: transform 0.5s ease; 
+        transition: transform 0.5s ease;
     }
-    
+
     .btn-contact:hover i {
         transform: translateX(-60px);
     }
-    
+
     .btn-contact p {
-        display: none; 
+        display: none;
         position: absolute;
         right: 10%;
         top: 50%;
@@ -389,24 +527,24 @@ h1 {
         color: white;
         white-space: nowrap;
     }
-    
+
     .btn-contact:hover p {
-        display: block; 
+        display: block;
     }
-    
+
     .btn-contact:hover {
         padding: 0.5rem 5rem;
         justify-content: space-between;
     }
-    
+
     .btn-tlf:hover {
         background-color: var(--tlf-color);
     }
-    
+
     .btn-whatsapp:hover {
         background-color: var(--whatsapp-color);
     }
-    
+
     .btn-email:hover {
         background-color: var(--email-color);
     }
